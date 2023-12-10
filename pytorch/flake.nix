@@ -1,14 +1,14 @@
 {
   description = "Example Python development environment for Zero to Nix";
-  nixConfig.bash-prompt = "\[qt4-dev\]$ ";
+  nixConfig.bash-prompt = "\[pytorch\]$ ";
 
   # Flake inputs
   inputs = {
-    #nixpkgs.url = "github:NixOS/nixpkgs"; # also valid: "nixpkgs"
+    nixpkgs.url = "github:NixOS/nixpkgs"; # also valid: "nixpkgs"
     #nixpkgs.url = "https://nixos.org/channels/nixos-22.05";
-    #https://channels.nixos.org/nixos-23.11 nixpkgs
     #nixpkgs.url = "channel:nixos-22.05";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05"; # also valid: "nixpkgs"
+    #nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11"; # also valid: "nixpkgs"
+    #nixpkgs.url = "https://channels.nixos.org/nixos-23.11";
   };
 
   # Flake outputs
@@ -38,10 +38,13 @@
         # Use Python 3.10, is ok with gcc
         python = pkgs.python310;
         qt = pkgs.qt4;
+        lunarvim = pkgs.lunarvim;
+        git = pkgs.git;
         tcl = pkgs.tcl;
         boost = pkgs.boost;
         bison = pkgs.bison;
         flex= pkgs.flex;
+        gcc = pkgs.gcc;
         tclreadline = pkgs.tclreadline;
       in
         pkgs.mkShell {
@@ -50,15 +53,14 @@
             # Python plus helper tools
             (python.withPackages (ps:
               with ps; [
-                numpy
                 pip
+                pandas
+                jupyterlab
+                lunarvim
               ]))
-            qt
-            boost
-            tcl
-            tclreadline
-            bison
-            flex
+	    gcc
+	    git
+	    lunarvim
           ];
         };
     });
