@@ -1,5 +1,13 @@
 { config, pkgs, ... }:
 
+let
+
+  pkgsUnstable = import <nixpkgs-unstable> {};
+  pkgsOld = import <nixpkgs-23.05> {};
+
+in
+
+
 #https://nix-community.github.io/home-manager/
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -21,7 +29,9 @@
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    pkgs.hello
+    #pkgs.pkgsUnstable.hello
+    #pkgsUnstable.hello
+    #pkgs.hello
     pkgs.lunarvim
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
