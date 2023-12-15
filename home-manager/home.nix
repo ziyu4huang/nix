@@ -1,15 +1,17 @@
 { config, pkgs, ... }:
 
 let
-
-  pkgsUnstable = import <nixpkgs-unstable> {};
-  pkgsOld = import <nixpkgs-23.05> {};
-
+    let otherPkgs = import <nixpkgs-old> {}
 in
 
 
 #https://nix-community.github.io/home-manager/
 {
+#  imports = [
+#    <nix-ld/modules/nix-ld.nix>
+#  ];
+
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ziyu4huang";
@@ -33,6 +35,8 @@ in
     #pkgsUnstable.hello
     #pkgs.hello
     pkgs.lunarvim
+    pkgs.git
+    pkgs.gcc
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -94,5 +98,7 @@ in
     userName = "Ziyu Huang";
     userEmail = "ziyu4huang@gmail.com";
   };
+
+  #programs.nix-ld.enable = true;
 
 }
