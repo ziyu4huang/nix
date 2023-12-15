@@ -4,8 +4,10 @@
   pkgs.mkShell {
     # nativeBuildInputs is usually what you want -- tools you need to run
     nativeBuildInputs = with pkgs.buildPackages; [ 
-      bison
-      flex
+      gnumake git neovim
+      bison flex
+      tclreadline
+      gcc11
       qt4
       ];
     shellHook = ''
