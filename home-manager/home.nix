@@ -4,7 +4,7 @@ let
 
   old-packages = [
   ];
-  unstable-packages = [
+  unstable-packages = with pkgs.unstable; [
   ];
   stable-packages = with pkgs; [
     # FIXME: select your core binaries that you always want on the bleeding-edge
@@ -17,7 +17,7 @@ in {
   # manage.
   home.username = "ziyu4huang";
   home.homeDirectory = "/home/ziyu4huang";
-
+  home.enableNixpkgsReleaseCheck = false;
 
   nixpkgs.overlays = [
     

@@ -3,7 +3,9 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-old.url = "github:nixos/nixpkgs/nixos-23.05";
     nur.url = "github:nix-community/NUR";
@@ -18,11 +20,9 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
 
-  unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
-  old = import <nixos-old> { config = config.nixpkgs.config; };
-  nur = import <nur> { inherit pkgs; };
-
-
+      #unstable = import <nixos-unstable> { config = config.nixpkgs.config; };
+      #old = import <nixos-old> { config = config.nixpkgs.config; };
+      nur = import <nur> { inherit pkgs; };
     in {
       nixpkgs.overlays = [
           nur.overlay
