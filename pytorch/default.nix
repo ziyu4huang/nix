@@ -7,16 +7,20 @@ let
     jupyterlab
     pandas
     requests
+    mpmath
     # other python packages you want
+    #
   ];
-  python-with-my-packages = python310.withPackages my-python-packages;
+  python-with-my-packages = python311.withPackages my-python-packages;
 in
 mkShell {
   buildInputs = [
     python-with-my-packages
-    lunarvim
   ];
+
   shellHook = ''
+# allow pip to install wheels 
+unset SOURCE_DATE_EPOCH 
     alias ll="ls -l"
     export FOO=bar
   '';
