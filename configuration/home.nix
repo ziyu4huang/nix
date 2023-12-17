@@ -7,12 +7,20 @@
   nix-index-database,
   ...
 }: let
+
+  old-packages = with pkgs.old; [
+    # FIXME: select your core binaries that you always want on the bleeding-edge
+    gcc11 qt4 gperftools tcl tk gnumake tclreadline readline boost
+
+  ];
+
   unstable-packages = with pkgs.unstable; [
     # FIXME: select your core binaries that you always want on the bleeding-edge
 
-    gcc11 qt4 gperftools tcl tk gnumake tclreadline readline boost
     git
     git-crypt
+    lunarvim
+    neovim
 
   ];
 
@@ -34,8 +42,6 @@
     jq
     killall
     mosh
-    lunarvim
-    neovim
     procs
     ripgrep
     sd
@@ -112,6 +118,7 @@ in {
   home.packages =
     stable-packages
     ++ unstable-packages
+    ++ old-packages
     ++
     # FIXME: you can add anything else that doesn't fit into the above two lists in here
     [
