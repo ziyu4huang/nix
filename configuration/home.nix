@@ -11,7 +11,6 @@
     # FIXME: select your core binaries that you always want on the bleeding-edge
 
     gcc11 qt4 gperftools tcl tk gnumake tclreadline readline boost
-
     git
     git-crypt
 
@@ -19,6 +18,7 @@
 
   stable-packages = with pkgs; [
     # FIXME: customize these stable packages to your liking for the languages that you use
+
     bat
     bottom
     coreutils
