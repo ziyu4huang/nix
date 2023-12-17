@@ -1,4 +1,9 @@
+Install CUDA WSL-Ubuntu
+=====================
+https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local
 
+
+=================
 # first change channdle ,  this is only availible for 22.05 now
 $> nix-channel --add https://nixos.org/channels/nixos-22.05 nixpkgs
 $> nix-shell -p qt4
