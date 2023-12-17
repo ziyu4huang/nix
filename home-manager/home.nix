@@ -1,21 +1,27 @@
 { config, pkgs, ... }:
-
 let
-    let otherPkgs = import <nixpkgs-old> {}
-in
 
 
-#https://nix-community.github.io/home-manager/
-{
-#  imports = [
-#    <nix-ld/modules/nix-ld.nix>
-#  ];
+  old-packages = [
+  ];
+  unstable-packages = [
+  ];
+  stable-packages = with pkgs; [
+    # FIXME: select your core binaries that you always want on the bleeding-edge
+    git neovim lunarvim
+  ];
 
 
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ziyu4huang";
   home.homeDirectory = "/home/ziyu4huang";
+
+
+  nixpkgs.overlays = [
+    
+  ];
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -28,15 +34,15 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = 
+    stable-packages
+    ++ old-packages
+    ++ unstable-packages
+    ++
+    [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    #pkgs.pkgsUnstable.hello
-    #pkgsUnstable.hello
-    #pkgs.hello
-    pkgs.lunarvim
-    pkgs.git
-    pkgs.gcc
+    # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -83,22 +89,6 @@ in
     EDITOR = "nvim";
   };
 
-  home.shellAliases = {
-      ll = "ls -l";
-      la = "ls -a";
-      vi = "nvim";
-      vim = "nvim";
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.git = {
-    enable = true;
-    userName = "Ziyu Huang";
-    userEmail = "ziyu4huang@gmail.com";
-  };
-
-  #programs.nix-ld.enable = true;
-
 }
