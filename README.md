@@ -3,10 +3,12 @@ START
 https://github.com/LGUG2Z/nixos-wsl-starter
 
 
+after Nixos installed
 ```
-git clone https://github.com/LGUG2Z/nixos-wsl-starter.git /tmp/configuration
-sudo nixos-rebuild switch --flake ~/nix/configuration
 sudo nix-channel --add https://nixos.org/channels/nixos-23.11 nixos
+
+git clone https://github.com/LGUG2Z/nixos-wsl-starter.git /tmp/configuration
+sudo nixos-rebuild switch --flake ~/nix/nixos_wsl
 
 ```
 
