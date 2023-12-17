@@ -1,27 +1,15 @@
 { config, pkgs, ... }:
-let
-
-
-  old-packages = [
-  ];
-  unstable-packages = with pkgs.unstable; [
-  ];
+let 
   stable-packages = with pkgs; [
-    # FIXME: select your core binaries that you always want on the bleeding-edge
-    git neovim lunarvim
+    neovim lunarvim
+    git git-crypt
   ];
-
 
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ziyu4huang";
   home.homeDirectory = "/home/ziyu4huang";
-  home.enableNixpkgsReleaseCheck = false;
-
-  nixpkgs.overlays = [
-    
-  ];
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -36,27 +24,27 @@ in {
   # environment.
   home.packages = 
     stable-packages
-    ++ old-packages
-    ++ unstable-packages
     ++
     [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+    pkgs.hello
+      #stable-packages
+      # # Adds the 'hello' command to your environment. It prints a friendly
+      # # "Hello, world!" when run.
+      # pkgs.hello
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
+    ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -82,11 +70,14 @@ in {
   #
   # or
   #
+  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
   #  /etc/profiles/per-user/ziyu4huang/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
-    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
