@@ -38,7 +38,7 @@
           })
 
           (_final: prev: {
-            # this allows us to reference pkgs.unstable
+            # this allows us to reference pkgs.old
             old = import nixpkgs-old {
               inherit (prev) system;
               inherit config;
