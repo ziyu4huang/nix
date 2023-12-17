@@ -6,9 +6,7 @@ https://github.com/LGUG2Z/nixos-wsl-starter
 ```
 git clone https://github.com/LGUG2Z/nixos-wsl-starter.git /tmp/configuration
 sudo nixos-rebuild switch --flake ~/nix/configuration
-
-# for use develop on older package
-sudo nix-channel --add https://nixos.org/channels/nixos-23.05 nixos
+sudo nix-channel --add https://nixos.org/channels/nixos-23.11 nixos
 
 ```
 
@@ -27,5 +25,6 @@ HOW develop works ?
 except home-manager
 each folder represent a nix-shell (./default.nix) for it's develop enviroments)
 
-sudo nix-channel --add https://nixos.org/channels/nixos-23.11 nixos
+# for use develop on older package
+sudo nix-channel --add https://nixos.org/channels/nixos-23.05 nixpkgs-23.05
 sudo nix-channel --update

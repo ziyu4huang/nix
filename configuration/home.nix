@@ -34,9 +34,9 @@
     jq
     killall
     mosh
+    lunarvim
     neovim
     procs
-    lunarvim
     ripgrep
     sd
     tmux

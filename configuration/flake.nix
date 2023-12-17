@@ -3,6 +3,7 @@
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
   inputs.nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-23.05";
+  inputs.nixpkgs-old.url = "github:nixos/nixpkgs/nixos-23.05";
 
   inputs.home-manager.url = "github:nix-community/home-manager/release-23.11";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +36,15 @@
               inherit config;
             };
           })
+
+          (_final: prev: {
+            # this allows us to reference pkgs.unstable
+            unstable = import nixpkgs-old {
+              inherit (prev) system;
+              inherit config;
+            };
+          })
+
         ];
       };
 
