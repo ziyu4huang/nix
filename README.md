@@ -51,3 +51,19 @@ If you do not plan on having Home Manager manage your shell configuration then y
 # in #$HOME/..profile
 
 if [ -e $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh ]; then . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh; fi # for nix home-manager
+
+Develop local pkgs 
+====================
+
+git clone https://github.com/NixOS/nixpkgs.git
+
+# optiona1
+nix-shell -I nixpkgs=/path/to/your/nixpkgs --pure -p packageName
+
+# optiono 2
+
+```
+export NIX_PATH=nixpkgs=/path/to/your/nixpkgs:$NIX_PATH
+nix-shell --pure -p packageName
+```
+
