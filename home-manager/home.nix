@@ -11,6 +11,47 @@ let
     #python311.pkgs.requests
     #python311.pkgs.pip
     #python311.pkgs.pandas
+    bat
+    bottom
+    coreutils
+
+
+    curl
+    du-dust
+    fd
+    findutils
+    fx
+
+    htop
+    jq
+    killall
+    mosh
+    procs
+    ripgrep
+    sd
+    tmux
+    tree
+    unzip
+    vim
+    wget
+    zip
+
+    #####
+    mkcert
+    httpie
+
+    # treesitter
+    tree-sitter
+
+    # language servers
+    ccls # c / c++
+
+    lua52Packages.luacheck
+    shellcheck
+    shfmt
+    statix # nix
+    sqlfluff
+    tflint
   ];
 
 in {
@@ -19,6 +60,7 @@ in {
   home.username = "ziyu4huang";
   #home.username = "${config.username}";
   home.homeDirectory = "/home/ziyu4huang";
+  home.enableNixpkgsReleaseCheck = false;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -188,7 +230,7 @@ in {
       shellAliases = {
         "..." = "./..";
         "...." = "././..";
-        #cd = "z";
+        cd = "z";
         gc = "nix-collect-garbage --delete-old";
         refresh = "source ${config.home.homeDirectory}/.zshrc";
         show_path = "echo $PATH | tr ':' '\n'";

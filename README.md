@@ -33,6 +33,7 @@ sudo nix-channel --update
 
 START : How to install home-manager
 ==============================
+
 https://nix-community.github.io/home-manager/index.xhtml#ch-installation
 
 Nixpkgs version 23.11 channel you can run
