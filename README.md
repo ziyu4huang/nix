@@ -57,13 +57,19 @@ Develop local pkgs
 
 git clone https://github.com/NixOS/nixpkgs.git
 
-# optiona1
+# option 1
 nix-shell -I nixpkgs=/path/to/your/nixpkgs --pure -p packageName
 
-# optiono 2
+# option 2
 
 ```
 export NIX_PATH=nixpkgs=/path/to/your/nixpkgs:$NIX_PATH
 nix-shell --pure -p packageName
 ```
+
+# option 3
+
+or just direct modify the channel directory
+
+ls -al ~/.nix-defexpr/channels/
 
