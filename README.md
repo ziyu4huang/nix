@@ -70,6 +70,5 @@ nix-shell --pure -p packageName
 # option 3
 
 or just direct modify the channel directory
-
 ls -al ~/.nix-defexpr/channels/
 
