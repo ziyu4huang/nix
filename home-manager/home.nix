@@ -1,6 +1,16 @@
 { config, pkgs, ... }:
 let 
+  qt48 = pkgs.callPackage ./nixlib/qt48 {
+    inherit (pkgs.gnome2) libgnomeui GConf gnome_vfs;
+    inherit (pkgs.darwin) libobjc;
+    inherit (pkgs.darwin.apple_sdk.frameworks) ApplicationServices OpenGL Cocoa AGL;
+    cups = if pkgs.stdenv.isLinux then pkgs.cups else null;
+    libmysqlclient = if (!pkgs.stdenv.isFreeBSD) then pkgs.libmysqlclient else null;
+  };
   stable-packages = with pkgs; [
+    patchelf
+
+    #################
     neovim lunarvim
     git git-crypt
     zsh
@@ -77,6 +87,7 @@ in {
     stable-packages
     ++
     [
+      qt48
       pkgs.hello
       #stable-packages
       # # Adds the 'hello' command to your environment. It prints a friendly
