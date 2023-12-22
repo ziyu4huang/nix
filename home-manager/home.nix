@@ -7,6 +7,9 @@ let
     cups = if pkgs.stdenv.isLinux then pkgs.cups else null;
     libmysqlclient = if (!pkgs.stdenv.isFreeBSD) then pkgs.libmysqlclient else null;
   };
+
+  unstable-packages = with pkgs; [
+  ];
   stable-packages = with pkgs; [
     patchelf
 
@@ -85,6 +88,7 @@ in {
   # environment.
   home.packages = 
     stable-packages
+    ++unstable-packages
     ++
     [
       qt48
@@ -268,6 +272,9 @@ in {
       '';
 
       initExtra = ''
+        export MODULAR_HOME="$HOME/.modular"
+        export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+
         bindkey '^p' history-search-backward
         bindkey '^n' history-search-forward
         bindkey '^e' end-of-line
