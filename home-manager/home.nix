@@ -17,6 +17,9 @@ let
     neovim lunarvim
     git git-crypt
     zsh
+    tcl tk
+    gcc
+
     #python311
     #(python311.withPackages(ps: with ps; [ pandas requests]))
 
@@ -273,7 +276,7 @@ in {
 
       initExtra = ''
         export MODULAR_HOME="$HOME/.modular"
-        export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+        export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$HOME/python311/bin:$PATH"
 
         bindkey '^p' history-search-backward
         bindkey '^n' history-search-forward
