@@ -1,5 +1,5 @@
-START
-======
+START NIXOS WSL
+=================
 https://github.com/LGUG2Z/nixos-wsl-starter
 
 
@@ -11,13 +11,10 @@ git clone https://github.com/LGUG2Z/nixos-wsl-starter.git /tmp/configuration
 sudo nixos-rebuild switch --flake ~/nix/nixos_wsl
 
 ```
-
-explore
-=======
-https://www.reddit.com/r/NixOS/comments/boj9qw/how_to_use_overlays_with_nixshell/
-
+START NIX package manager
+==========================
 ```
-{ pkgs ? import <nixpkgs> { overlays = [ (import ./nix_files/overlay.nix) ]; } }:
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
 ```
 
 
@@ -71,4 +68,13 @@ nix-shell --pure -p packageName
 
 or just direct modify the channel directory
 ls -al ~/.nix-defexpr/channels/
+
+
+explore overlage
+==========
+https://www.reddit.com/r/NixOS/comments/boj9qw/how_to_use_overlays_with_nixshell/
+
+```
+{ pkgs ? import <nixpkgs> { overlays = [ (import ./nix_files/overlay.nix) ]; } }:
+```
 
