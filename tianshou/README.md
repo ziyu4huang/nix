@@ -5,3 +5,5 @@ pip install gymnasium[box2d]
 git clone --depth 1 https://github.com/Farama-Foundation/ViZDoom
 pip install -e .
 
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ziyu4huang/.mujoco/mujoco210/bin
+
