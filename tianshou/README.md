@@ -7,3 +7,34 @@ pip install -e .
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ziyu4huang/.mujoco/mujoco210/bin
 
+
+offline 
+===========
+
+
+python examples/atari/atari_dqn.py   --save-buffer-name atari_dqn.hdf5
+python examples/offline/atari_bcq.py  --load-buffer-name atari_dqn.hdf5
+
+
+###################
+
+Warning: Flow failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'flow'
+Warning: CARLA failed to import. Set the environment variable D4RL_SUPPRESS_IMPORT_ERROR=1 to suppress this message.
+No module named 'carla'
+
+
+
+Instructions for installing CARLA can be found here
+
+nstructions for installing Flow can be found here. 
+Make sure to install using the SUMO simulator, and add the flow repository to your PYTHONPATH once finished.
+
+
+
+test D4RL
+============
+
+# 测试,创建 test_d4rl.py 并添加如下内容 vim test_d4rl.py
+
+
