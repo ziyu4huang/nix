@@ -1,3 +1,18 @@
+
+SIMPLE start use nix and build placer
+=====================================
+
+```
+source start_nix.sh
+nix-shell build_env.nix
+
+for CUDA
+========
+export LIBRARY_PATH=/usr/local/cuda-12.3/lib64:/usr/local/cuda-12.3/targets/x86_64-linux/lib/stubs
+export CPATH=/usr/local/cuda-12.3/include
+```
+
+
 START NIXOS WSL
 =================
 https://github.com/LGUG2Z/nixos-wsl-starter
