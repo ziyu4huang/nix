@@ -4,6 +4,15 @@ SIMPLE start use nix and build placer
 
 ```
 source start_nix.sh
+
+# for package use 
+#  nix-shell -p bash 
+
+# for package use 
+#  nix-shell -p home-manager
+
+# or develop 
+# cd build_placer
 nix-shell build_env.nix
 
 for CUDA
@@ -93,3 +102,8 @@ https://www.reddit.com/r/NixOS/comments/boj9qw/how_to_use_overlays_with_nixshell
 { pkgs ? import <nixpkgs> { overlays = [ (import ./nix_files/overlay.nix) ]; } }:
 ```
 
+
+build python
+============
+./configure --enable-shared LDFLAGS="-Wl,-rpath='\$\$ORIGIN/../lib'" \ 
+	--prefix=${HOME}/python312  --enable-optimizations
